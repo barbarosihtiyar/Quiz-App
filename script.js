@@ -40,12 +40,15 @@ document.querySelector(".card-footer").addEventListener("click",function(){
         let soru=quiz.soruGetir();
         quiz.soruIndex++;
         soruGoster(soru);
+        document.querySelector(".next_btn").classList.remove("show");
+
     }
     else{
         console.log("Quiz Bitti!")
     }
 
 });
+const option_list = document.querySelector(".option_list");
 function soruGoster(soru){
     let question = `<span>${soru.soruMetni}</span>`;
     let options = ``;
@@ -58,6 +61,30 @@ function soruGoster(soru){
         </div>`
     }
 
+
     document.querySelector(".question_text").innerHTML = question;
-    document.querySelector(".option_list").innerHTML = options;
+    option_list.innerHTML = options;
+
+    const option = document.querySelectorAll(".option");
+
+    for(let opt of option){
+
+        opt.setAttribute("onclick","optionSelected(this)");
+    }
 }
+
+    function optionSelected(option){
+        let cevap = option.querySelector("span b").textContent;
+        let soru  = quiz.soruGetir();    
+
+        if(soru.cevabiKontrolEt(cevap)){
+            option.classList.add("correct");
+
+        }else{
+            option.classList.add("incorrect");
+        }
+        for(let i=0 ; i < option_list.children.length ; i++){
+            option_list.children[i].classList.add("disabled");
+        }
+        document.querySelector(".next_btn").classList.add("show");
+    }
