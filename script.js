@@ -2,6 +2,11 @@ function Soru(soruMetni,cevapSecenekleri,dogruCevap){
     this.soruMetni = soruMetni;
     this.cevapSecenekleri = cevapSecenekleri;
     this.dogruCevap =  dogruCevap;
+    this.score_box = document.querySelector(".score_box"),
+    this.btn_replay = document.querySelector(".btn_replay"),
+    this.btn_quit = document.querySelector(".btn_quit"),
+    this.time_second = document.querySelector(".time_second"),
+    this.time_text = document.querySelector(".time_text")
 }
 
 Soru.prototype.cevabiKontrolEt = function(cevap){
@@ -16,20 +21,13 @@ let sorular = [
     new Soru ("5-Hangisi javascript paket yönetim uygulamasıdır ?" , {a:"Node.js" , b:"Typescript" , c:"Npm" , d:"Nuget"} , "c")
 ];
 
-function Quiz(){
-    this.sorular = sorular;
-    this.soruIndex = 0;
-}
 
-Quiz.prototype.soruGetir = function(){
-    return this.sorular[this.soruIndex];
-}
 
-const quiz = new Quiz(sorular);
 var startBtn = document.querySelector(".startBtn");
 
 startBtn.addEventListener("click",function(){
     document.querySelector(".quiz_box").classList.add("active");
+    startTime(10);
     let soru=quiz.soruGetir();
     quiz.soruIndex++;
     soruGoster(soru);
@@ -44,6 +42,9 @@ document.querySelector(".card-footer").addEventListener("click",function(){
 
     }
     else{
+        document.querySelector(".score_box").classList.add("active");
+        document.querySelector(".quiz_box").classList.remove("active");
+        skoruGoster(quiz.sorular.length,quiz.dogruCevapSayisi);
         console.log("Quiz Bitti!")
     }
 
@@ -78,6 +79,7 @@ function soruGoster(soru){
         let soru  = quiz.soruGetir();    
 
         if(soru.cevabiKontrolEt(cevap)){
+            quiz.dogruCevapSayisi += 1;
             option.classList.add("correct");
 
         }else{
@@ -87,4 +89,31 @@ function soruGoster(soru){
             option_list.children[i].classList.add("disabled");
         }
         document.querySelector(".next_btn").classList.add("show");
+    }
+
+    function skoruGoster(toplamSoru,dogruCevap){
+        let tag = `Toplam ${toplamSoru} sorudan ${dogruCevap} doğru cevap verdiniz`;
+        document.querySelector(".score_text").innerHTML = tag;
+        startBtn.click();
+        score_box.classList.remove("active");
+    }
+
+    btn_quit.addEventListener("click",function(){
+        window.location.reload();
+    });
+
+    btn_replay.addEventListener("click",function(){
+        quiz.soruIndex = 0;
+        quiz.dogruCevapSayisi = 0;
+        startBtn.click();
+        score_box.classList.remove("active");
+    });
+
+    function startTime(time){
+
+        setInterval(time);
+        function time(){
+            Quiz.time_second.textContent = time;
+            time--;
+        }
     }
