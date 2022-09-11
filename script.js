@@ -13,9 +13,9 @@ ui.next_btn.addEventListener("click",function(){
         startTime(10);
         ui.soruGoster(quiz.soruGetir());
         ui.next_btn.classList.remove("show");
-
     }
     else{
+        ui.next_btn.classList.remove("show");
         clearInterval(counter);
         ui.score_box.classList.add("active");
         ui.quiz_box.classList.remove("active");
@@ -38,6 +38,7 @@ ui.next_btn.addEventListener("click",function(){
             ui.option_list.children[i].classList.add("disabled");
         }
         ui.next_btn.classList.add("show");
+
     }
 
     
