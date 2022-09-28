@@ -1,22 +1,22 @@
-# Quiz System in Javascript
-*Quiz System is a Javascript based web application. In this Quiz System, users are expected to give correct answers within a certain time. When all questions are answered, detailed results are shared with the user at the end of the Quiz.*
+# Movie App in React
+*Movie App is a React-based web app. In this Movie Application, users offer the chance to search for the movie they want and add it to the watch list or the watched list.*
 
 # Features
-- Number of changeable questions
-- Changeable time
-- Detailed Results Page
-- Instant right or wrong answer display
-- Javascript Dom manipulations
+- Search movie
+- Add to watchlist
+- Add to watchedlist
+- Remove to watchlist
+- Remove to watchedlist
+- Change of watched and watch list movies
 
 #### In Addition
-- Bootstrap Design
-- If no answer is given when the time is up, the correct answer is shown
-- Once the answer is marked, it cannot be reversed
+- Number of movies in the list
+- Warning notification when there is no movie in the list
+- Button for watclist or watched
 
 # Screenshots
 
-![Screenshot](https://user-images.githubusercontent.com/104565169/189483673-9fa8ab19-8f59-46f8-b8e7-f9dc25f881f4.png)
-
-![Screenshot1](https://user-images.githubusercontent.com/104565169/189483694-ada3bcb1-4fb1-459e-a738-083670a13b7a.png)
-
-![Screenshot2](https://user-images.githubusercontent.com/104565169/189483695-fca808b8-9f50-4864-b7a7-f2cd856ac329.png)
+![SS1](https://user-images.githubusercontent.com/104565169/192854916-0068f312-f51f-4732-b696-0a46d44fa127.png)
+![SS4](https://user-images.githubusercontent.com/104565169/192855009-819183fc-324e-4b34-8dac-4f2b09752f90.png)
+![SS5](https://user-images.githubusercontent.com/104565169/192855527-3950f3ba-a21f-4333-a9d3-67e5a8db0a2e.png)
+![SS7](https://user-images.githubusercontent.com/104565169/192855075-bfb3e6d8-8973-460f-aa3a-4d99df074b50.png)
